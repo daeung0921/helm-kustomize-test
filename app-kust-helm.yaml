@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: kust-helm-app
+  namespace: argocd
+spec: 
+  project: default
+  source:
+    repoURL: 'https://github.com/daeung0921/helm-kustomize-test.git'
+    path: .
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: postgre-chart
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
