@@ -1,10 +1,14 @@
+namespace: postgre-chart
+
 resources:
 - namespace.yaml
 
-helmChartInflationGenerator:
-- chartName: postgresql
-  chartRepoUrl: https://charts.bitnami.com/bitnami
-  chartVersion: 13.2.24
+helmCharts:
+- name: postgresql
+  namespace: postgre-chart
+  valuesFile : ./my-values.yaml
+  repo: https://charts.bitnami.com/bitnami
+  version: 13.2.24
   releaseName: my-postgre-release
-  releaseNamespace: postgre-chart 
-  values: my-values.yaml
+  IncludeCRDs: true
+
